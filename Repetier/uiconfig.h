@@ -94,7 +94,7 @@ What display type do you use?
     IMPORTANT: You need to uncomment the LiquidCrystal include in Repetier.pde for it to work.
                If you have Sanguino and want to use the library, you need to have Arduino 023 or older. (13.04.2012)
 */
-#define UI_DISPLAY_TYPE 4
+#define UI_DISPLAY_TYPE 1
 
 /** Number of columns per row
 
