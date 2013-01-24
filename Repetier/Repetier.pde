@@ -117,7 +117,7 @@ Custom M Codes
 #include <SPI.h>
 
 #if UI_DISPLAY_TYPE==4
-//#include <LiquidCrystal.h> // Uncomment this if you are using liquid crystal library
+#include <LiquidCrystal.h> // Uncomment this if you are using liquid crystal library
 #endif
 
 // ================ Sanity checks ================
@@ -2670,5 +2670,4 @@ if((ADCSRA & _BV(ADSC))==0) { // Conversion finished?
  UI_FAST; // Short timed user interface action
  pwm_count++;
 }
-
 
