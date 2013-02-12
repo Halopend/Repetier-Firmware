@@ -164,6 +164,7 @@ Overridden if EEPROM activated.*/
 // 2 is 200k thermistor
 // 3 is mendel-parts thermistor (EPCOS G550)
 // 4 is 10k thermistor
+// 8 is ATC Semitec 104GT-2
 // 5 is userdefined thermistor table 0
 // 6 is userdefined thermistor table 1
 // 7 is userdefined thermistor table 2
@@ -275,6 +276,7 @@ The codes are only executed for multiple extruder when changing the extruder. */
 // 5 is userdefined thermistor table 0
 // 6 is userdefined thermistor table 1
 // 7 is userdefined thermistor table 2
+// 8 is ATC Semitec 104GT-2
 // 50 is userdefined thermistor table 0 for PTC thermistors
 // 51 is userdefined thermistor table 0 for PTC thermistors
 // 52 is userdefined thermistor table 0 for PTC thermistors
@@ -568,6 +570,10 @@ A good start is 30 lower then the optimal value. You need to leave room for cool
 // This feature exists to protect your hotend from overheating accidentally, but *NOT* from thermistor short/failure!
 // You should use MINTEMP for thermistor short/failure protection.
 #define MAXTEMP 275
+
+/** Extreme values to detect defect thermistors. */
+#define MIN_DEFECT_TEMPERATURE -10
+#define MAX_DEFECT_TEMPERATURE 300
 
 /** \brief Used reference, normally ANALOG_REF_AVCC or ANALOG_REF_AREF for experts ANALOG_REF_INT_2_56 = 2.56V and ANALOG_REF_INT_1_1=1.1V inernaly generated */
 #define ANALOG_REF ANALOG_REF_AVCC
@@ -970,6 +976,11 @@ the power will be turned on without the need to call M80 if initially started.
 */
 #define ENABLE_POWER_ON_STARTUP
 
+/**
+If you use an ATX power supply you need the power pin to work non inverting. For some speacial
+boards you might need to make it inverting.
+*/
+#define POWER_INVERTING false
 /** What shall the printer do, when it receives an M112 emergency stop signal?
  0 = Disable heaters/motors, wait for ever until someone presses reset.
  1 = restart by resetting the AVR controller. The USB connection will not reset if managed by a different chip!
@@ -1012,8 +1023,6 @@ IMPORTANT: With mode <>0 some changes in configuration.h are not set any more, a
            taken from the EEPROM.
 */
 #define EEPROM_MODE 1
-
-
 /** Set to false to disable SD support: */
 #ifndef SDSUPPORT  // Some boards have sd support on board. These define the values already in pins.h
 #define SDSUPPORT true
@@ -1047,7 +1056,7 @@ of uiconfig.h
 1 = Manual definition of display and keys parameter in uiconfig.h
 
 The following settings override uiconfig.h!
-2 = Smartcontroller on a RAMPS from reprapdiscount
+2 = Smartcontroller from reprapdiscount on a RAMPS or RUMBA board
 3 = Adafruit RGB controller
 4 = Foltyn 3DMaster with display attached
 */
@@ -1058,11 +1067,12 @@ Select the language to use.
 0 = english
 1 = german
 2 = dutch
+3 = brazilian portuguese
 */
 #define UI_LANGUAGE 0
 
 // This is line 2 of the status display at startup
-#define UI_VERSION_STRING2 "Mendel"
+#define UI_VERSION_STRING2 "iRapid"
 
 /** How many ms should a single page be shown, until it is switched to the next one.*/
 #define UI_PAGES_DURATION 4000
@@ -1107,7 +1117,7 @@ Values must be in range 1..255
 
 // Values used for preheat
 #define UI_SET_PRESET_HEATED_BED_TEMP_PLA 60
-#define UI_SET_PRESET_EXTRUDER_TEMP_PLA   170
+#define UI_SET_PRESET_EXTRUDER_TEMP_PLA   180
 #define UI_SET_PRESET_HEATED_BED_TEMP_ABS 110
 #define UI_SET_PRESET_EXTRUDER_TEMP_ABS   240
 // Extreme values 
