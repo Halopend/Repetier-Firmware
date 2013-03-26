@@ -22,46 +22,45 @@
 
   <div class="wrapper">
     <header>
-      <h1 class="title">Repetier-firmware for Rostock Max</h1>
+      <h1 class="title">Repetier-Firmware</h1>
     </header>
     <div id="container">
-      <p class="tagline">Repetier Firmware customized for the Rostock Max on Rambo 1.1.</p>
+      <p class="tagline">for rostock max</p>
       <div id="main" role="main">
         <div class="download-bar">
         <div class="inner">
           <a href="https://github.com/Halopend/Repetier-Firmware/tarball/master" class="download-button tar"><span>Download</span></a>
           <a href="https://github.com/Halopend/Repetier-Firmware/zipball/master" class="download-button zip"><span>Download</span></a>
-          <a href="https://github.com/Halopend/Repetier-Firmware" class="code">View Repetier-firmware for Rostock Max on GitHub</a>
+          <a href="https://github.com/Halopend/Repetier-Firmware" class="code">View on code on GitHub</a>
         </div>
         <span class="blc"></span><span class="trc"></span>
         </div>
         <article class="markdown-body">
-          <h3>Welcome to GitHub Pages.</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>This is a version of <a href="https://github.com/repetier/Repetier-Firmware.git">repetier firmware</a> ported to run on the rostock max 3d printer by SeeMeCNC. It supports and is preconfigured to enable LCD controller support. </p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<h3>Install</h3>
+<p>First you'll need to download the firmware(!). Depending on your priorities, you can either just download the zip file above and use that or use git (which you'll have to install) to clone the repository using:</p>
+<pre><code>cd folder/where/you/want/to/install/
+git clone https://github.com/repetier/Repetier-Firmware.git
+</code></pre>
+<p>Updating consist of:</p>
+<pre><code>cd path/to/repetier-firmware/
+git pull
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<h3>Setup</h3>            
+<p>You'll need to download the arduino software from <a href="http://arduino.cc/en/Main/Software">here</a> to compile and upload the Firmware to your board. Use it to open the file repetier-firmware/Reptier.pde. In the arduino app, go to tools>board>arduino mega 2560 and make sure that it's checked. with your board connected over USB, hit upload and you should be good to go.</p>
+            
 
-<h3>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
+<p>With EEPROM support enabled (which is the default), you need to intialize the settings the first time you run the firmware using the M-Codes:</p>
+<pre><code>M502
+M500
+</code></pre>
+This loads the default settings from the firmware to memory and then writes these settings to the EEPROM. Without doing this step, all your firmware settings will be at the mercy of whatever previous firmwares wrote to EEPROM before and your system will behave completely unpredictably. 
 <h3>Authors and Contributors</h3>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>The original creator of repetier <a href="https://github.com/repetier" class="user-mention">@reptier</a> and the source of the initial port <a href="https://github.com/polygonhell/" class="user-mention">@polygonshell</a>. 
         </article>
       </div>
     </div>
