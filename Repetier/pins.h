@@ -290,6 +290,10 @@ STEPPER_CURRENT_CONTROL
 #if MOTHERBOARD == 33
   #define MOTHERBOARD 3
   #define RAMPS_V_1_3
+#elif MOTHERBOARD == 34
+  #define MOTHERBOARD 3
+  #define RAMPS_V_1_3
+  #define AZTEEG_X3
 #endif
 #if MOTHERBOARD == 3
   #define KNOWN_BOARD 1
@@ -411,6 +415,16 @@ STEPPER_CURRENT_CONTROL
 #define MOSI_PIN         51
 #define MAX6675_SS       53
 
+#ifdef AZTEEG_X3
+#define SDSUPPORT true
+#define SDCARDDETECTINVERTED false
+#define SDCARDDETECT -1
+#define FAN_PIN           4
+#define FAN2_PIN          5
+#define LIGHT_PIN         6
+#define BEEPER_PIN        33  // Activate beeper on extension shield
+#define BEEPER_TYPE        1
+#endif
 
 #endif
 
@@ -670,6 +684,9 @@ STEPPER_CURRENT_CONTROL
     #define TEMP_1_PIN          6   // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!! (pin 34 bed)
     #define SDPOWER          -1
     #define SDSS          31
+    #define SCK_PIN          7
+    #define MISO_PIN         6
+    #define MOSI_PIN         5
     
     #define E0_PINS E0_STEP_PIN,E0_DIR_PIN,E0_ENABLE_PIN,
     #define E1_PINS
