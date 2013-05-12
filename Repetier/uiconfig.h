@@ -318,7 +318,7 @@ void ui_init_keys() {
 void ui_check_keys(int &action) {
 #if UI_HAS_KEYS!=0
 
- UI_KEYS_CLICKENCODER_LOW_REV(76,77); // click encoder on pins 47 and 45. Phase is connected with gnd for signals.
+ UI_KEYS_CLICKENCODER_LOW(76,77); // click encoder on pins 47 and 45. Phase is connected with gnd for signals.
  UI_KEYS_BUTTON_LOW(78,UI_ACTION_OK); // push button, connects gnd to pin
  UI_KEYS_BUTTON_LOW(KILL_PIN,UI_ACTION_KILL); // push button, connects gnd to pin
 
